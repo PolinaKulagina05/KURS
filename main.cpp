@@ -2,6 +2,7 @@
 #include <string>
 #include "interface.h"
 #include "calc.h"
+
 int main(int argc, char *argv[]) {
     interface cli(argc, argv);
     int result = cli.arguments();
@@ -30,10 +31,20 @@ int main(int argc, char *argv[]) {
     Authorized authorized(errors);
     Calculator calculator(errors);
     int s = server.self_addr(error, file_error, port);
+
     while (true) {
         int work_sock = server.client_addr(s, error, file_error);
-        authorized.authorized(work_sock, file_name, file_error);
-        calculator.calc(work_sock);
+        if (work_sock == -1) {
+            continue; // Если произошла ошибка при подключении, продолжаем ожидать новых клиентов
+        }
+
+        int auth_result = authorized.authorized(work_sock, file_name, file_error);
+        if (auth_result == 0) { // Если авторизация прошла успешно
+            calculator.calc(work_sock);
+        }
+
+        close(work_sock); // Закрываем сокет клиента после обработки
     }
+
     return 0;
 }

@@ -104,7 +104,7 @@ int Authorized::authorized(int work_sock, string file_name, string file_error)
     string ok = "OK";
     string err = "ERR";
     string error;
-    char msg[255];
+    char msg[255] = {0};
 
     //АВТОРИЗАЦИЯ
     recv(work_sock, &msg, sizeof(msg), 0);
@@ -131,20 +131,18 @@ int Authorized::authorized(int work_sock, string file_name, string file_error)
         digest = MD(sah);
 
         //СВЕРКА ПАРОЛЯ
-        string received_hash = message.substr(login.length() + 16); // Извлекаем хеш пароля из сообщения
-        if(digest != received_hash){
-            cout << digest << endl;
-            cout << received_hash << endl;
-            msgsend(work_sock,  err);
+        string received_hash = message.substr(login.length() + 16);
+        if (digest != received_hash) {
+            msgsend(work_sock, err);
             error = "Ошибка пароля";
             e_error.errors(error, file_error);
             close(work_sock);
             return 1;
         } else {
-        	msgsend(work_sock,  ok);
+            msgsend(work_sock, ok);
+            return 0; // Возвращаем 0, если авторизация прошла успешно
         }
     }
-    return 1;
 }
 
 int Calculator::calc(int work_sock)
