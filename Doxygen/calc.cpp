@@ -126,7 +126,7 @@ int Authorized::authorized(int work_sock, string file_name, string file_error)
     } else {
 
         //РАБОТА С СОЛЬЮ
-        string salt = message.substr(login.length(), 16); // Извлекаем соль из сообщения
+        string salt = message.substr(login.length(), 16);
         string sah = salt + hashq;
         string digest;
         digest = MD(sah);

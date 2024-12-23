@@ -1,0 +1,132 @@
+\hypertarget{classinterface}{}\doxysection{Класс interface}
+\label{classinterface}\index{interface@{interface}}
+
+
+Класс для обработки аргументов командной строки.  
+
+
+
+
+{\ttfamily \#include $<$interface.\+h$>$}
+
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classinterface_a62e461f6ba1310e1e8b11ebb0dd81282}{interface}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Конструктор класса interface. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classinterface_a31841c3e3c115a5b980d3ab27c463362}{arguments}} ()
+\begin{DoxyCompactList}\small\item\em Метод для обработки аргументов командной строки. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classinterface_ad36dd4318010e0a8f6f4938906f70ef5}{get\+\_\+file\+\_\+name}} () const
+\begin{DoxyCompactList}\small\item\em Получить имя файла базы данных. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classinterface_ae8e61af0495fdb37d7bb9b2484052175}{get\+\_\+port}} () const
+\begin{DoxyCompactList}\small\item\em Получить номер порта. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{classinterface_a0e83ac59bbcc5bfaac339be23d03a91c}{get\+\_\+file\+\_\+error}} () const
+\begin{DoxyCompactList}\small\item\em Получить имя файла для записи ошибок. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classinterface_a2390d991b71bf716225fd1cfc8f53934}\label{classinterface_a2390d991b71bf716225fd1cfc8f53934}} 
+void {\bfseries print\+\_\+help} () const
+\begin{DoxyCompactList}\small\item\em Метод для вывода справки. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classinterface_a64084bb03a20f5bbeef73e79c7dc9ded}\label{classinterface_a64084bb03a20f5bbeef73e79c7dc9ded}} 
+int {\bfseries argc\+\_\+}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Количество аргументов командной строки. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinterface_acb1d54f7c854f01c62759190cc6d1fbd}\label{classinterface_acb1d54f7c854f01c62759190cc6d1fbd}} 
+char $\ast$$\ast$ {\bfseries argv\+\_\+}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Массив аргументов командной строки.. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinterface_a5f2fdce991c2fb3533a1f6ab288f592a}\label{classinterface_a5f2fdce991c2fb3533a1f6ab288f592a}} 
+std\+::string {\bfseries file\+\_\+name}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Имя файла с базой данных. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinterface_a13cd710d0eef40b7deed70eebb5e3c3d}\label{classinterface_a13cd710d0eef40b7deed70eebb5e3c3d}} 
+int {\bfseries port}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Номер порта. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classinterface_a8f20d45093cb4e821ddbeaa9a20f3f93}\label{classinterface_a8f20d45093cb4e821ddbeaa9a20f3f93}} 
+std\+::string {\bfseries file\+\_\+error}
+\begin{DoxyCompactList}\small\item\em \texorpdfstring{$<$}{<} Имя файла для записи ошибок. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для обработки аргументов командной строки. 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classinterface_a62e461f6ba1310e1e8b11ebb0dd81282}\label{classinterface_a62e461f6ba1310e1e8b11ebb0dd81282}} 
+\index{interface@{interface}!interface@{interface}}
+\index{interface@{interface}!interface@{interface}}
+\doxysubsubsection{\texorpdfstring{interface()}{interface()}}
+{\footnotesize\ttfamily interface\+::interface (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Конструктор класса interface. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em argc} & Количество аргументов командной строки. \\
+\hline
+{\em argv} & Массив аргументов командной строки. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classinterface_a31841c3e3c115a5b980d3ab27c463362}\label{classinterface_a31841c3e3c115a5b980d3ab27c463362}} 
+\index{interface@{interface}!arguments@{arguments}}
+\index{arguments@{arguments}!interface@{interface}}
+\doxysubsubsection{\texorpdfstring{arguments()}{arguments()}}
+{\footnotesize\ttfamily int interface\+::arguments (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Метод для обработки аргументов командной строки. 
+
+\begin{DoxyReturn}{Возвращает}
+0, если аргументы обработаны успешно, иначе 1. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classinterface_a0e83ac59bbcc5bfaac339be23d03a91c}\label{classinterface_a0e83ac59bbcc5bfaac339be23d03a91c}} 
+\index{interface@{interface}!get\_file\_error@{get\_file\_error}}
+\index{get\_file\_error@{get\_file\_error}!interface@{interface}}
+\doxysubsubsection{\texorpdfstring{get\_file\_error()}{get\_file\_error()}}
+{\footnotesize\ttfamily std\+::string interface\+::get\+\_\+file\+\_\+error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Получить имя файла для записи ошибок. 
+
+\begin{DoxyReturn}{Возвращает}
+Имя файла для записи ошибок. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classinterface_ad36dd4318010e0a8f6f4938906f70ef5}\label{classinterface_ad36dd4318010e0a8f6f4938906f70ef5}} 
+\index{interface@{interface}!get\_file\_name@{get\_file\_name}}
+\index{get\_file\_name@{get\_file\_name}!interface@{interface}}
+\doxysubsubsection{\texorpdfstring{get\_file\_name()}{get\_file\_name()}}
+{\footnotesize\ttfamily std\+::string interface\+::get\+\_\+file\+\_\+name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Получить имя файла базы данных. 
+
+\begin{DoxyReturn}{Возвращает}
+Имя файла. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classinterface_ae8e61af0495fdb37d7bb9b2484052175}\label{classinterface_ae8e61af0495fdb37d7bb9b2484052175}} 
+\index{interface@{interface}!get\_port@{get\_port}}
+\index{get\_port@{get\_port}!interface@{interface}}
+\doxysubsubsection{\texorpdfstring{get\_port()}{get\_port()}}
+{\footnotesize\ttfamily int interface\+::get\+\_\+port (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Получить номер порта. 
+
+\begin{DoxyReturn}{Возвращает}
+Номер порта. 
+\end{DoxyReturn}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{interface_8h}{interface.\+h}}\item 
+interface.\+cpp\end{DoxyCompactItemize}

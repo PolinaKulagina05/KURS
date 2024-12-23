@@ -1,0 +1,69 @@
+\begin{theindex}
+
+  \item {arguments}
+    \subitem {interface}, \hyperpage{12}
+  \item {Authorized}, \hyperpage{5}
+    \subitem {Authorized}, \hyperpage{6}
+    \subitem {authorized}, \hyperpage{6}
+    \subitem {MD}, \hyperpage{7}
+    \subitem {msgsend}, \hyperpage{7}
+  \item {authorized}
+    \subitem {Authorized}, \hyperpage{6}
+
+  \indexspace
+
+  \item {calc}
+    \subitem {Calculator}, \hyperpage{9}
+  \item {calc.h}, \hyperpage{17}
+  \item {Calculator}, \hyperpage{8}
+    \subitem {calc}, \hyperpage{9}
+    \subitem {Calculator}, \hyperpage{9}
+  \item {client\_addr}
+    \subitem {Server}, \hyperpage{15}
+
+  \indexspace
+
+  \item {er}
+    \subitem {Error}, \hyperpage{10}
+  \item {Error}, \hyperpage{10}
+    \subitem {er}, \hyperpage{10}
+    \subitem {errors}, \hyperpage{11}
+  \item {errors}
+    \subitem {Error}, \hyperpage{11}
+
+  \indexspace
+
+  \item {get\_file\_error}
+    \subitem {interface}, \hyperpage{13}
+  \item {get\_file\_name}
+    \subitem {interface}, \hyperpage{13}
+  \item {get\_port}
+    \subitem {interface}, \hyperpage{13}
+
+  \indexspace
+
+  \item {interface}, \hyperpage{11}
+    \subitem {arguments}, \hyperpage{12}
+    \subitem {get\_file\_error}, \hyperpage{13}
+    \subitem {get\_file\_name}, \hyperpage{13}
+    \subitem {get\_port}, \hyperpage{13}
+    \subitem {interface}, \hyperpage{12}
+  \item {interface.h}, \hyperpage{19}
+
+  \indexspace
+
+  \item {MD}
+    \subitem {Authorized}, \hyperpage{7}
+  \item {msgsend}
+    \subitem {Authorized}, \hyperpage{7}
+
+  \indexspace
+
+  \item {self\_addr}
+    \subitem {Server}, \hyperpage{15}
+  \item {Server}, \hyperpage{14}
+    \subitem {client\_addr}, \hyperpage{15}
+    \subitem {self\_addr}, \hyperpage{15}
+    \subitem {Server}, \hyperpage{14}
+
+\end{theindex}

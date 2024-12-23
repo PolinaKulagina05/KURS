@@ -1,0 +1,179 @@
+\hypertarget{classServer}{}\doxysection{Класс Server}
+\label{classServer}\index{Server@{Server}}
+
+
+Класс для настройки и управления сервером.  
+
+
+
+
+{\ttfamily \#include $<$calc.\+h$>$}
+
+
+
+Граф связей класса Server\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=142pt]{classServer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classServer_af2d7ac300139aaab894149fdb155e3ec}{Server}} (\mbox{\hyperlink{classError}{Error}} err)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classServer}{Server}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}{self\+\_\+addr}} (std\+::string \&error, std\+::string \&file\+\_\+error, int port)
+\begin{DoxyCompactList}\small\item\em Метод для настройки адреса сервера. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classServer_a16b593109a6f0b85797652b836e69f02}{client\+\_\+addr}} (int s, std\+::string \&error, std\+::string \&file\+\_\+error)
+\begin{DoxyCompactList}\small\item\em Метод для обработки подключения клиента. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classServer_a0761dd50aca6cfdd1ad2d165d08dbcf8}\label{classServer_a0761dd50aca6cfdd1ad2d165d08dbcf8}} 
+\mbox{\hyperlink{classError}{Error}} {\bfseries e\+\_\+error}
+\begin{DoxyCompactList}\small\item\em Объект для обработки ошибок. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для настройки и управления сервером. 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classServer_af2d7ac300139aaab894149fdb155e3ec}\label{classServer_af2d7ac300139aaab894149fdb155e3ec}} 
+\index{Server@{Server}!Server@{Server}}
+\index{Server@{Server}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{Server()}{Server()}}
+{\footnotesize\ttfamily Server\+::\+Server (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classError}{Error}}}]{err }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор класса \mbox{\hyperlink{classServer}{Server}}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em err} & Объект класса \mbox{\hyperlink{classError}{Error}} для обработки ошибок. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classServer_a16b593109a6f0b85797652b836e69f02}\label{classServer_a16b593109a6f0b85797652b836e69f02}} 
+\index{Server@{Server}!client\_addr@{client\_addr}}
+\index{client\_addr@{client\_addr}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{client\_addr()}{client\_addr()}}
+{\footnotesize\ttfamily int Server\+::client\+\_\+addr (\begin{DoxyParamCaption}\item[{int}]{s,  }\item[{std\+::string \&}]{error,  }\item[{std\+::string \&}]{file\+\_\+error }\end{DoxyParamCaption})}
+
+
+
+Метод для обработки подключения клиента. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em s} & Сокет сервера. \\
+\hline
+{\em error} & Ссылка на строку для записи ошибки. \\
+\hline
+{\em file\+\_\+error} & Имя файла для записи ошибки. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Сокет клиента. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}\label{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}} 
+\index{Server@{Server}!self\_addr@{self\_addr}}
+\index{self\_addr@{self\_addr}!Server@{Server}}
+\doxysubsubsection{\texorpdfstring{self\_addr()}{self\_addr()}}
+{\footnotesize\ttfamily int Server\+::self\+\_\+addr (\begin{DoxyParamCaption}\item[{std\+::string \&}]{error,  }\item[{std\+::string \&}]{file\+\_\+error,  }\item[{int}]{port }\end{DoxyParamCaption})}
+
+
+
+Метод для настройки адреса сервера. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em error} & Ссылка на строку для записи ошибки. \\
+\hline
+{\em file\+\_\+error} & Имя файла для записи ошибки. \\
+\hline
+{\em port} & Порт сервера. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Сокет сервера.
+\end{DoxyReturn}
+Метод начинает с проверки, является ли переданный порт корректным. Порт должен быть в диапазоне от 0 до 65535. Если порт выходит за пределы допустимого диапазона, метод формирует сообщение об ошибке, записывает его в файл (через объект e\+\_\+error), и выбрасывает исключение std\+::runtime\+\_\+error. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (port < 0 || port > 65535) \{}
+\DoxyCodeLine{    error = \textcolor{stringliteral}{"{}Некорректное значение порта: "{}} + to\_string(port);}
+\DoxyCodeLine{    \mbox{\hyperlink{classServer_a0761dd50aca6cfdd1ad2d165d08dbcf8}{e\_error}}.\mbox{\hyperlink{classError_a6253c0d98f76b9ca931fdde30800511b}{errors}}(error, file\_error);}
+\DoxyCodeLine{    \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"{}Invalid port value"{}});}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Метод создает сокет с помощью функции socket. Сокет использует семейство адресов AF\+\_\+\+INET (IPv4) и тип сокета SOCK\+\_\+\+STREAM (TCP). Если создание сокета завершается с ошибкой (возвращается значение меньше 0), метод выводит сообщение об ошибке с помощью perror и завершает программу с кодом EXIT\+\_\+\+FAILURE. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int} sock = socket(AF\_INET, SOCK\_STREAM, 0);}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (sock < 0) \{}
+\DoxyCodeLine{    perror(\textcolor{stringliteral}{"{}Ошибка при создании сокета"{}});}
+\DoxyCodeLine{    exit(EXIT\_FAILURE);}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Метод устанавливает опцию SO\+\_\+\+REUSEADDR для сокета, чтобы разрешить повторное использование адреса и порта после завершения работы сервера. Если установка опции завершается с ошибкой (возвращается -\/1), метод выбрасывает исключение std\+::system\+\_\+error. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int} on = 1;}
+\DoxyCodeLine{\textcolor{keywordtype}{int} rc = setsockopt(sock, SOL\_SOCKET, SO\_REUSEADDR, \&on, \textcolor{keyword}{sizeof}(on));}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (rc == -\/1) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{throw} system\_error(errno, generic\_category(), \textcolor{stringliteral}{"{}Ошибка установки сокета"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Метод устанавливает обработчик сигнала SIGALRM с помощью функции signal. Этот сигнал будет использоваться для ограничения времени ожидания подключения клиента. Затем метод устанавливает таймаут на 240 секунд для операций приема данных с помощью опции SO\+\_\+\+RCVTIMEO. Если установка таймаута завершается с ошибкой, метод выбрасывает исключение std\+::system\+\_\+error. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{signal(SIGALRM, alarm\_handler);}
+\DoxyCodeLine{alarm(240);}
+\DoxyCodeLine{\textcolor{keyword}{struct }timeval timeout \{240, 0\};}
+\DoxyCodeLine{rc = setsockopt(sock, SOL\_SOCKET, SO\_RCVTIMEO, \&timeout, \textcolor{keyword}{sizeof}(timeout));}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (rc == -\/1) \{}
+\DoxyCodeLine{    \textcolor{keywordflow}{throw} system\_error(errno, generic\_category(), \textcolor{stringliteral}{"{}Ошибка установки сокета"{}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Метод настраивает структуру sockaddr\+\_\+in, которая содержит информацию об адресе сервера. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{sockaddr\_in \mbox{\hyperlink{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}{self\_addr}};}
+\DoxyCodeLine{\mbox{\hyperlink{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}{self\_addr}}.sin\_family = AF\_INET;}
+\DoxyCodeLine{\mbox{\hyperlink{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}{self\_addr}}.sin\_port = htons(port);}
+\DoxyCodeLine{\mbox{\hyperlink{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}{self\_addr}}.sin\_addr.s\_addr = inet\_addr(\textcolor{stringliteral}{"{}127.0.0.1"{}});}
+
+\end{DoxyCode}
+
+
+Метод вызывает функцию bind, чтобы привязать сокет к указанному адресу и порту. Если привязка завершается с ошибкой (возвращается -\/1), метод выводит сообщение об ошибке, записывает его в файл (через объект e\+\_\+error) и возвращает код ошибки 1. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{int} b = bind(sock, \textcolor{keyword}{reinterpret\_cast<}sockaddr*\textcolor{keyword}{>}(\&\mbox{\hyperlink{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}{self\_addr}}), \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}{self\_addr}}));}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (b == -\/1) \{}
+\DoxyCodeLine{    cout << \textcolor{stringliteral}{"{}Ошибка привязки\(\backslash\)n"{}};}
+\DoxyCodeLine{    error = \textcolor{stringliteral}{"{}Ошибка"{}};}
+\DoxyCodeLine{    \mbox{\hyperlink{classServer_a0761dd50aca6cfdd1ad2d165d08dbcf8}{e\_error}}.\mbox{\hyperlink{classError_a6253c0d98f76b9ca931fdde30800511b}{errors}}(error, file\_error);}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+После успешной привязки сокета метод вызывает функцию listen, чтобы начать прослушивание входящих подключений. 
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{calc_8h}{calc.\+h}}\item 
+calc.\+cpp\end{DoxyCompactItemize}

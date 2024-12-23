@@ -1,0 +1,114 @@
+\hypertarget{classCalculator}{}\doxysection{Класс Calculator}
+\label{classCalculator}\index{Calculator@{Calculator}}
+
+
+Класс для выполнения вычислений.  
+
+
+
+
+{\ttfamily \#include $<$calc.\+h$>$}
+
+
+
+Граф связей класса Calculator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=151pt]{classCalculator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCalculator_a30b3e117b1f8881ada496b794d370f6f}{Calculator}} (\mbox{\hyperlink{classError}{Error}} err)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classCalculator}{Calculator}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classCalculator_a5552f45c214f550b648102b4e4858bb6}{calc}} (int work\+\_\+sock)
+\begin{DoxyCompactList}\small\item\em Метод для выполнения вычислений. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classCalculator_a9df4334cb9b557ae42f5e098fc1ee6e1}\label{classCalculator_a9df4334cb9b557ae42f5e098fc1ee6e1}} 
+\mbox{\hyperlink{classError}{Error}} {\bfseries e\+\_\+error}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для выполнения вычислений. 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classCalculator_a30b3e117b1f8881ada496b794d370f6f}\label{classCalculator_a30b3e117b1f8881ada496b794d370f6f}} 
+\index{Calculator@{Calculator}!Calculator@{Calculator}}
+\index{Calculator@{Calculator}!Calculator@{Calculator}}
+\doxysubsubsection{\texorpdfstring{Calculator()}{Calculator()}}
+{\footnotesize\ttfamily Calculator\+::\+Calculator (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classError}{Error}}}]{err }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор класса \mbox{\hyperlink{classCalculator}{Calculator}}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em err} & Объект класса \mbox{\hyperlink{classError}{Error}} для обработки ошибок. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classCalculator_a5552f45c214f550b648102b4e4858bb6}\label{classCalculator_a5552f45c214f550b648102b4e4858bb6}} 
+\index{Calculator@{Calculator}!calc@{calc}}
+\index{calc@{calc}!Calculator@{Calculator}}
+\doxysubsubsection{\texorpdfstring{calc()}{calc()}}
+{\footnotesize\ttfamily int Calculator\+::calc (\begin{DoxyParamCaption}\item[{int}]{work\+\_\+sock }\end{DoxyParamCaption})}
+
+
+
+Метод для выполнения вычислений. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em work\+\_\+sock} & Сокет клиента. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат вычислений (1 -\/ успех).
+\end{DoxyReturn}
+Метод принимает от клиента значение Quantity, которое указывает, сколько наборов чисел будет отправлено. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{recv(work\_sock, \&Quantity, \textcolor{keyword}{sizeof}(Quantity), 0);}
+
+\end{DoxyCode}
+
+
+Метод выполняет цикл по количеству наборов чисел (Quantity). Для каждого набора\+: Принимает значение Length, которое указывает, сколько чисел содержится в текущем наборе. Инициализирует переменную Amount для хранения суммы чисел в текущем наборе. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < Quantity; j++) \{}
+\DoxyCodeLine{    recv(work\_sock, \&Length, \textcolor{keyword}{sizeof}(Length), 0);}
+\DoxyCodeLine{    \textcolor{keywordtype}{float} Amount = 0;}
+
+\end{DoxyCode}
+
+
+Внутри цикла по Length метод принимает числа от клиента и суммирует их в переменной Amount. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < Length; i++) \{}
+\DoxyCodeLine{    recv(work\_sock, \&Vector\_numbers, \textcolor{keyword}{sizeof}(Vector\_numbers), 0);}
+\DoxyCodeLine{    Amount += Vector\_numbers;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+После суммирования всех чисел в наборе метод отправляет результат (Amount) обратно клиенту. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{send(work\_sock, \&Amount, \textcolor{keyword}{sizeof}(Amount), 0);}
+
+\end{DoxyCode}
+
+
+После завершения всех вычислений метод выводит закрывает соединение с клиентом. 
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{calc_8h}{calc.\+h}}\item 
+calc.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,181 @@
+\hypertarget{classAuthorized}{}\doxysection{Класс Authorized}
+\label{classAuthorized}\index{Authorized@{Authorized}}
+
+
+Класс для авторизации клиента.  
+
+
+
+
+{\ttfamily \#include $<$calc.\+h$>$}
+
+
+
+Граф связей класса Authorized\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=153pt]{classAuthorized__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Открытые члены}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{classAuthorized_a516c3579eb9ae9eb9a96d45bb6ea6cb5}{MD}} (const std\+::string \&sah)
+\begin{DoxyCompactList}\small\item\em Метод для вычисления MD5 хеша. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAuthorized_a2e5d4442b185559f02642988d7c7112f}{Authorized}} (\mbox{\hyperlink{classError}{Error}} err)
+\begin{DoxyCompactList}\small\item\em Конструктор класса \mbox{\hyperlink{classAuthorized}{Authorized}}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classAuthorized_a11168cc28a608116b540ab0fd3e4ea4d}{authorized}} (int work\+\_\+sock, string file\+\_\+name, string file\+\_\+error)
+\begin{DoxyCompactList}\small\item\em Метод для авторизации клиента. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые члены}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classAuthorized_a69ea2105ac0d8331c0c94fd618fb6438}{msgsend}} (int work\+\_\+sock, const std\+::string \&mess)
+\begin{DoxyCompactList}\small\item\em Метод для отправки сообщения клиенту. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Закрытые данные}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAuthorized_a68d3b9443e59267617e5a598cf443ccd}\label{classAuthorized_a68d3b9443e59267617e5a598cf443ccd}} 
+\mbox{\hyperlink{classError}{Error}} {\bfseries e\+\_\+error}
+\begin{DoxyCompactList}\small\item\em Объект для обработки ошибок. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Подробное описание}
+Класс для авторизации клиента. 
+
+\doxysubsection{Конструктор(ы)}
+\mbox{\Hypertarget{classAuthorized_a2e5d4442b185559f02642988d7c7112f}\label{classAuthorized_a2e5d4442b185559f02642988d7c7112f}} 
+\index{Authorized@{Authorized}!Authorized@{Authorized}}
+\index{Authorized@{Authorized}!Authorized@{Authorized}}
+\doxysubsubsection{\texorpdfstring{Authorized()}{Authorized()}}
+{\footnotesize\ttfamily Authorized\+::\+Authorized (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classError}{Error}}}]{err }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Конструктор класса \mbox{\hyperlink{classAuthorized}{Authorized}}. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em err} & Объект класса \mbox{\hyperlink{classError}{Error}} для обработки ошибок. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Методы}
+\mbox{\Hypertarget{classAuthorized_a11168cc28a608116b540ab0fd3e4ea4d}\label{classAuthorized_a11168cc28a608116b540ab0fd3e4ea4d}} 
+\index{Authorized@{Authorized}!authorized@{authorized}}
+\index{authorized@{authorized}!Authorized@{Authorized}}
+\doxysubsubsection{\texorpdfstring{authorized()}{authorized()}}
+{\footnotesize\ttfamily int Authorized\+::authorized (\begin{DoxyParamCaption}\item[{int}]{work\+\_\+sock,  }\item[{string}]{file\+\_\+name,  }\item[{string}]{file\+\_\+error }\end{DoxyParamCaption})}
+
+
+
+Метод для авторизации клиента. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em work\+\_\+sock} & Сокет клиента. \\
+\hline
+{\em file\+\_\+name} & Имя файла с данными для авторизации. \\
+\hline
+{\em file\+\_\+error} & Имя файла для записи ошибки. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Результат авторизации (0 -\/ успех, 1 -\/ ошибка).
+\end{DoxyReturn}
+Метод принимает сообщение от клиента через сокет work\+\_\+sock. Это сообщение содержит данные для авторизации (логин, соль и хеш пароля). 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{recv(work\_sock, \&msg, \textcolor{keyword}{sizeof}(msg), 0);}
+\DoxyCodeLine{\textcolor{keywordtype}{string} message = msg;}
+
+\end{DoxyCode}
+
+
+Метод открывает файл file\+\_\+name, который содержит данные авторизации (логин и хеш пароля). 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{fstream file;}
+\DoxyCodeLine{file.open(file\_name);}
+\DoxyCodeLine{getline(file, login, \textcolor{charliteral}{':'});}
+\DoxyCodeLine{getline(file, hashq);}
+
+\end{DoxyCode}
+
+
+Метод сравнивает логин, полученный от клиента, с логином, хранящимся в файле. Если логины не совпадают, метод отправляет клиенту сообщение ERR, записывает сообщение об ошибке в файл (через объект e\+\_\+error) и закрывает соединение. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (message.substr(0, login.length()) != login) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{classAuthorized_a69ea2105ac0d8331c0c94fd618fb6438}{msgsend}}(work\_sock, err);}
+\DoxyCodeLine{    error = \textcolor{stringliteral}{"{}Ошибка логина"{}};}
+\DoxyCodeLine{    \mbox{\hyperlink{classAuthorized_a68d3b9443e59267617e5a598cf443ccd}{e\_error}}.\mbox{\hyperlink{classError_a6253c0d98f76b9ca931fdde30800511b}{errors}}(error, file\_error);}
+\DoxyCodeLine{    close(work\_sock);}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Если логин корректен, метод извлекает соль из сообщения клиента (16 символов после логина). Затем метод формирует строку sah, которая состоит из соли и хеша пароля из файла. Далее метод вычисляет MD5-\/хеш строки sah с помощью функции MD. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{string} salt = message.substr(login.length(), 16); \textcolor{comment}{// Извлекаем соль из сообщения}}
+\DoxyCodeLine{\textcolor{keywordtype}{string} sah = salt + hashq;}
+\DoxyCodeLine{\textcolor{keywordtype}{string} digest = \mbox{\hyperlink{classAuthorized_a516c3579eb9ae9eb9a96d45bb6ea6cb5}{MD}}(sah);}
+
+\end{DoxyCode}
+
+
+Метод сравнивает вычисленный хеш digest с хешем, полученным от клиентa. Если хеши не совпадают, метод отправляет клиенту сообщение ERR, записывает сообщение об ошибке в файл и закрывает соединение. 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keywordtype}{string} received\_hash = message.substr(login.length() + 16);}
+\DoxyCodeLine{\textcolor{keywordflow}{if} (digest != received\_hash) \{}
+\DoxyCodeLine{    \mbox{\hyperlink{classAuthorized_a69ea2105ac0d8331c0c94fd618fb6438}{msgsend}}(work\_sock, err);}
+\DoxyCodeLine{    error = \textcolor{stringliteral}{"{}Ошибка пароля"{}};}
+\DoxyCodeLine{    \mbox{\hyperlink{classAuthorized_a68d3b9443e59267617e5a598cf443ccd}{e\_error}}.\mbox{\hyperlink{classError_a6253c0d98f76b9ca931fdde30800511b}{errors}}(error, file\_error);}
+\DoxyCodeLine{    close(work\_sock);}
+\DoxyCodeLine{    \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+Если логин и пароль корректны, метод отправляет клиенту сообщение OK и возвращает 0, что означает успешную авторизацию. \mbox{\Hypertarget{classAuthorized_a516c3579eb9ae9eb9a96d45bb6ea6cb5}\label{classAuthorized_a516c3579eb9ae9eb9a96d45bb6ea6cb5}} 
+\index{Authorized@{Authorized}!MD@{MD}}
+\index{MD@{MD}!Authorized@{Authorized}}
+\doxysubsubsection{\texorpdfstring{MD()}{MD()}}
+{\footnotesize\ttfamily string Authorized\+::\+MD (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{sah }\end{DoxyParamCaption})}
+
+
+
+Метод для вычисления MD5 хеша. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em sah} & Строка для хеширования. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Возвращает}
+Хеш в формате строки. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classAuthorized_a69ea2105ac0d8331c0c94fd618fb6438}\label{classAuthorized_a69ea2105ac0d8331c0c94fd618fb6438}} 
+\index{Authorized@{Authorized}!msgsend@{msgsend}}
+\index{msgsend@{msgsend}!Authorized@{Authorized}}
+\doxysubsubsection{\texorpdfstring{msgsend()}{msgsend()}}
+{\footnotesize\ttfamily void Authorized\+::msgsend (\begin{DoxyParamCaption}\item[{int}]{work\+\_\+sock,  }\item[{const std\+::string \&}]{mess }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Метод для отправки сообщения клиенту. 
+
+
+\begin{DoxyParams}{Аргументы}
+{\em work\+\_\+sock} & Сокет клиента. \\
+\hline
+{\em mess} & Сообщение для отправки. \\
+\hline
+\end{DoxyParams}
+
+
+Объявления и описания членов классов находятся в файлах\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{calc_8h}{calc.\+h}}\item 
+calc.\+cpp\end{DoxyCompactItemize}

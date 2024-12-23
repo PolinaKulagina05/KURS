@@ -1,0 +1,77 @@
+\hypertarget{calc_8h_source}{}\doxysection{calc.\+h}
+\mbox{\hyperlink{calc_8h}{См. документацию.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <netinet/in.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <cassert>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <arpa/inet.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <cstdlib>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <ctime>}}
+\DoxyCodeLine{15 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{17 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{18 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{19 \textcolor{preprocessor}{\#include <cryptopp/cryptlib.h>}}
+\DoxyCodeLine{20 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{21 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{22 \textcolor{preprocessor}{\#include <getopt.h>}}
+\DoxyCodeLine{23 \textcolor{preprocessor}{\#include <unistd.h>}}
+\DoxyCodeLine{24 \textcolor{preprocessor}{\#include <getopt.h>}}
+\DoxyCodeLine{25 \textcolor{preprocessor}{\#include <csignal>}}
+\DoxyCodeLine{26 \textcolor{preprocessor}{\#include <cstdlib>}}
+\DoxyCodeLine{27 \textcolor{preprocessor}{\#include <cryptopp/hex.h>} }
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#define CRYPTOPP\_ENABLE\_NAMESPACE\_WEAK 1}}
+\DoxyCodeLine{29 \textcolor{preprocessor}{\#include <cryptopp/md5.h>}}
+\DoxyCodeLine{30 \textcolor{keyword}{using namespace }CryptoPP;}
+\DoxyCodeLine{31 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{36 \textcolor{keyword}{class }\mbox{\hyperlink{classError}{Error}}}
+\DoxyCodeLine{37 \{}
+\DoxyCodeLine{38 \textcolor{keyword}{public}:}
+\DoxyCodeLine{39     \mbox{\hyperlink{classError_aca339d00ad8481fb4c184f0ece42698b}{Error}}(); }
+\DoxyCodeLine{45     \textcolor{keyword}{static} \textcolor{keywordtype}{void} \mbox{\hyperlink{classError_a6253c0d98f76b9ca931fdde30800511b}{errors}}(std::string error, std::string name);}
+\DoxyCodeLine{52     \textcolor{keyword}{static} \textcolor{keywordtype}{int} \mbox{\hyperlink{classError_a4a9eafd8446fd4d6f046233a876078e0}{er}}(std::string file\_name, std::string file\_error);}
+\DoxyCodeLine{53 \};}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{59 \textcolor{keyword}{class }\mbox{\hyperlink{classServer}{Server}}}
+\DoxyCodeLine{60 \{}
+\DoxyCodeLine{61 \textcolor{keyword}{private}:}
+\DoxyCodeLine{62     \mbox{\hyperlink{classError}{Error}} \mbox{\hyperlink{classServer_a0761dd50aca6cfdd1ad2d165d08dbcf8}{e\_error}}; }
+\DoxyCodeLine{63 \textcolor{keyword}{public}:}
+\DoxyCodeLine{68     \mbox{\hyperlink{classServer_af2d7ac300139aaab894149fdb155e3ec}{Server}}(\mbox{\hyperlink{classError}{Error}} err) : \mbox{\hyperlink{classServer_a0761dd50aca6cfdd1ad2d165d08dbcf8}{e\_error}}(err) \{}
+\DoxyCodeLine{69         \mbox{\hyperlink{classServer_a0761dd50aca6cfdd1ad2d165d08dbcf8}{e\_error}} = err;}
+\DoxyCodeLine{70     \}}
+\DoxyCodeLine{131     \textcolor{keywordtype}{int} \mbox{\hyperlink{classServer_aeb0aec2fefebfdb6583e3df93d9672cb}{self\_addr}}(std::string\& error, std::string\& file\_error, \textcolor{keywordtype}{int} port);}
+\DoxyCodeLine{139     \textcolor{keywordtype}{int} \mbox{\hyperlink{classServer_a16b593109a6f0b85797652b836e69f02}{client\_addr}}(\textcolor{keywordtype}{int} s, std::string\& error, std::string\& file\_error);}
+\DoxyCodeLine{140 \};}
+\DoxyCodeLine{141 }
+\DoxyCodeLine{142 }
+\DoxyCodeLine{147 \textcolor{keyword}{class }\mbox{\hyperlink{classAuthorized}{Authorized}}}
+\DoxyCodeLine{148 \{}
+\DoxyCodeLine{149 \textcolor{keyword}{private}:}
+\DoxyCodeLine{150     \mbox{\hyperlink{classError}{Error}} \mbox{\hyperlink{classAuthorized_a68d3b9443e59267617e5a598cf443ccd}{e\_error}}; }
+\DoxyCodeLine{156     \textcolor{keywordtype}{void} \mbox{\hyperlink{classAuthorized_a69ea2105ac0d8331c0c94fd618fb6438}{msgsend}}(\textcolor{keywordtype}{int} work\_sock, \textcolor{keyword}{const} std::string\& mess);}
+\DoxyCodeLine{157 \textcolor{keyword}{public}:}
+\DoxyCodeLine{163     std::string \mbox{\hyperlink{classAuthorized_a516c3579eb9ae9eb9a96d45bb6ea6cb5}{MD}}(\textcolor{keyword}{const} std::string\& sah);}
+\DoxyCodeLine{168     \mbox{\hyperlink{classAuthorized_a2e5d4442b185559f02642988d7c7112f}{Authorized}}(\mbox{\hyperlink{classError}{Error}} err) : \mbox{\hyperlink{classAuthorized_a68d3b9443e59267617e5a598cf443ccd}{e\_error}}(err) \{}
+\DoxyCodeLine{169         \mbox{\hyperlink{classAuthorized_a68d3b9443e59267617e5a598cf443ccd}{e\_error}} = err;}
+\DoxyCodeLine{170     \}}
+\DoxyCodeLine{218     \textcolor{keywordtype}{int} \mbox{\hyperlink{classAuthorized_a11168cc28a608116b540ab0fd3e4ea4d}{authorized}}(\textcolor{keywordtype}{int} work\_sock, \textcolor{keywordtype}{string} file\_name, \textcolor{keywordtype}{string} file\_error);}
+\DoxyCodeLine{219 \};}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221 }
+\DoxyCodeLine{226 \textcolor{keyword}{class }\mbox{\hyperlink{classCalculator}{Calculator}}}
+\DoxyCodeLine{227 \{}
+\DoxyCodeLine{228 \textcolor{keyword}{private}:}
+\DoxyCodeLine{229     \mbox{\hyperlink{classError}{Error}} e\_error; \textcolor{comment}{//< Объект для обработки ошибок.}}
+\DoxyCodeLine{230 \textcolor{keyword}{public}:}
+\DoxyCodeLine{235     \mbox{\hyperlink{classCalculator_a30b3e117b1f8881ada496b794d370f6f}{Calculator}}(\mbox{\hyperlink{classError}{Error}} err) : e\_error(err) \{}
+\DoxyCodeLine{236         e\_error = err;}
+\DoxyCodeLine{237     \}}
+\DoxyCodeLine{265     \textcolor{keywordtype}{int} \mbox{\hyperlink{classCalculator_a5552f45c214f550b648102b4e4858bb6}{calc}}(\textcolor{keywordtype}{int} work\_sock);}
+\DoxyCodeLine{266 \};}
+\DoxyCodeLine{267 }
+
+\end{DoxyCode}
